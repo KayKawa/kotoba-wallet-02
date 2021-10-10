@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_154057) do
+ActiveRecord::Schema.define(version: 2021_10_10_154534) do
+
+  create_table "purchases", charset: "utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "statements", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "wallet_id"
