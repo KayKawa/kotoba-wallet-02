@@ -13,8 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_10_10_154534) do
 
   create_table "purchases", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "wallet_id"
+    t.bigint "statement_id"
+    t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["statement_id"], name: "index_purchases_on_statement_id"
+    t.index ["wallet_id"], name: "index_purchases_on_wallet_id"
   end
 
   create_table "statements", charset: "utf8mb4", force: :cascade do |t|
@@ -51,6 +56,8 @@ ActiveRecord::Schema.define(version: 2021_10_10_154534) do
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
+  add_foreign_key "purchases", "statements"
+  add_foreign_key "purchases", "wallets"
   add_foreign_key "statements", "wallets"
   add_foreign_key "wallets", "users"
 end

@@ -8,7 +8,8 @@ class PurchaseStatement
     statement = Statement.create(plus: quantity, wallet_id: wallet_id)
     # 発行情報を保存
 
-    Purchase.create(wallet_id: wallet_id, statement_id: statement.id, quantity: quantity)
+    Purchase.create(quantity: quantity, wallet_id: wallet_id, statement_id: statement.id)
+
     # WALLET残高の更新
     wallet = Wallet.find(wallet_id)
     update_sum = wallet.stock_quantity.to_i + quantity.to_i
