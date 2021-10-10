@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_114223) do
+ActiveRecord::Schema.define(version: 2021_10_10_134934) do
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,4 +29,13 @@ ActiveRecord::Schema.define(version: 2021_10_10_114223) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "wallets", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "stock_quantity", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wallets_on_user_id"
+  end
+
+  add_foreign_key "wallets", "users"
 end
