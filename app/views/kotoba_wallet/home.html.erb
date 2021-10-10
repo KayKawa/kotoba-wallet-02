@@ -1,32 +1,17 @@
-<div class="w-full h-screen">
-  <!-- nav bar -->
-  <nav class="w-full h-auto bg-gray-800 px-8 sm:px-0 fixed top-0">
-    <div class="container flex items-center justify-between py-4 mx-auto">
-      <label class="text-3xl font-extralight text-gray-100 flex">
-        <svg class="w-8 pt-1 mr-1" viewBox="0 0 400 400" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="#FFF"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
-        <span>KOTOBA</span><span class="ml-1 font-extrabold">WALETTE</span>
-      </label>
-      <ul class="flex text-gray-800 items-center">
-        <li class="uppercase font-semibold mr-6 rounded-md border border-blue-400 text-blue-400 hover:text-gray-200 hover:bg-blue-400 transition">
-          <a href='#' class='block px-4 py-1'>
-            Login
-          </a>
-        </li>
-      </ul>
+<%= render "shared/home-header" %>
+<section class="mx-auto w-full h-full bg-gray-100">
+  <div class="bg-yellow-400 text-gray-800 w-full h-full sm:px-0 mx-auto flex flex-col justify-center pt-32">
+    <div class="bg-gray-100  rounded-full mx-auto">
+      <h1 class="text-7xl font-extrabold text-center text-yellow-400 p-28 px-48">
+        <span class="font-normal">KOTOBA</span><br>
+        <span class="font-extrabold">WALLET</span>
+      </h1>
+      <svg class="w-52  mx-auto mb-20" viewBox="0 0 350 400" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="#FBBF24"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
     </div>
-  </nav>
-  <section class="mx-auto w-full h-full bg-gray-100">
-    <div class="bg-yellow-400 text-gray-800 w-full h-full sm:px-0 mx-auto flex flex-col justify-center pt-32">
-      <div class="bg-gray-100  rounded-full mx-auto">
-        <h1 class="text-7xl font-extrabold text-center text-yellow-400 p-28 px-48">
-          <span class="font-normal">KOTOBA</span><br>
-          <span class="font-extrabold">WALLET</span></h1>
-        <svg class="w-52  mx-auto mb-20" viewBox="0 0 350 400" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="#FBBF24"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
-      </div>
-      <h1 class="text-7xl font-extrabold text-center mt-10">KOTOBAで気持ちを贈ろう。</h1>
-      <p class="text-2xl mt-4 tracking-widest text-center">文字に金銭価値を付けて、メッセージを贈ることができるサービス</p>
-    </div>
+    <h1 class="text-7xl font-extrabold text-center mt-10">KOTOBAで気持ちを贈ろう。</h1>
+    <p class="text-2xl mt-4 tracking-widest text-center">文字に金銭価値を付けて、メッセージを贈ることができるサービス</p>
   </div>
+</div>
 </section>
 <section class="text-gray-600 body-font px-24 bg-yellow-400 h-1/2">
   <div class="px-5 py-24 mx-auto">
@@ -72,7 +57,7 @@
 <section class="py-96  max-w-screen-lg2 mx-auto tracking-widest px-24 "   >
   <h3 class="mb-5 text-4xl max-md:w-10/12 max-md:mx-auto w-11/12 mx-auto tracking-loose">KOTOBAの量は、信頼の量。</h3 >
   <div class="leading-9 max-md:w-10/12 max-md:mx-auto w-11/12 mx-auto font-light "    >
-    「100年に1度の危機」と言われる新型コロナウイルスの感染は世界中で拡大の一途をたどり、なかなか収束に至る状況が見えてきません。今もなお、世界中が苦しみ続けています。中でも、苦しんだのは、挑戦する「サービス提供者」です。不要不急と言われ続けた多くの「サービス提供者」が挑戦をやめざるを得ない状況となりました。しかし、そんな状況下でも、挑戦を続けることができた人もいます。かれらは、「応援の言葉」や「感謝の言葉」を集めていました。さらに言うと、信頼を集め「ファン」を作ることができていた人です。「ファン」を作った人は、”お客さんから選ばれ続け”、”売上”を伸ばし、”フォロワー”を増やしました。KOTOBA WALLETでは、挑戦する「サービス提供者」の「信頼」を数値化する装置を作ることが目的です。
+    「100年に1度の危機」と言われる新型コロナウイルスの感染は世界中で拡大の一途をたどり、なかなか収束に至る状況が見えてきません。今もなお、世界中が苦しみ続けています。中でも、苦しんだのは、挑戦する「サービス提供者」です。不要不急と言われ続けた多くの「サービス提供��」が挑戦をやめざるを得ない状況となりました。しかし���������そんな状況下でも、挑戦を続けることができた人もいます。かれらは、「応援の言葉」や「感謝の言葉」を集めていました。さらに言うと、信頼を集め「ファン」を作ることができていた人です。「ファン」を作った人は、”お客さんから選ばれ続け”、”売上”を伸ばし、”フォロワー”を増やしました。KOTOBA WALLETでは、挑戦する「サービス提供者」の「信頼」を数値化する装置を作ることが目的です。
   </div>
 </section>
 <section class="w-full px-24 flex justify-center items-start mx-auto pt-32 pb-8 flex-wrap bg-gray-100">
@@ -95,3 +80,4 @@
     </p>
   </a>
 </div>
+<%= render "shared/footer" %>
