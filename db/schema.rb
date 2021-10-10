@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_191001) do
+ActiveRecord::Schema.define(version: 2021_10_10_191249) do
 
   create_table "buys", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "giver_id"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 2021_10_10_191001) do
     t.index ["statement_id"], name: "index_buys_on_statement_id"
     t.index ["taker_id"], name: "index_buys_on_taker_id"
     t.index ["wallet_id"], name: "index_buys_on_wallet_id"
+  end
+
+  create_table "messages", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "buy_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.text "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buy_id"], name: "index_messages_on_buy_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "purchases", charset: "utf8mb4", force: :cascade do |t|
@@ -75,6 +87,9 @@ ActiveRecord::Schema.define(version: 2021_10_10_191001) do
   add_foreign_key "buys", "users", column: "giver_id"
   add_foreign_key "buys", "users", column: "taker_id"
   add_foreign_key "buys", "wallets"
+  add_foreign_key "messages", "buys"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "purchases", "statements"
   add_foreign_key "purchases", "wallets"
   add_foreign_key "statements", "wallets"
