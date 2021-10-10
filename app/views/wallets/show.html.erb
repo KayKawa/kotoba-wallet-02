@@ -1,0 +1,46 @@
+<%= render "shared/header" %>
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+<script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+<div class="grid w-full min-h-screen bg-gray-900 place-content-center">
+  <p class="text-3xl font-bold text-gray-100 text center md:text-6xl">
+    これは<%= @wallet.user.nickname%>さんのWALLETページです。<br>
+    残高は<%= @wallet.stock_quantity %>です。<br>
+    <%= link_to new_wallet_purchase_path(@wallet.id) do %>
+      発行する
+    <% end %>
+    <%= link_to new_wallet_buy_path(@wallet.id) do %>
+      購入する
+    <% end %>
+  </p>
+</div>
+<div class="w-full min-h-screen bg-gray-600" x-data="topBtn">
+  <button @click="scrolltoTop" id="topButton"
+        class="fixed z-10 hidden p-3 bg-gray-100 rounded-full shadow-md bottom-10 right-10 animate-bounce">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
+      </path>
+    </svg>
+  </button>
+</div>
+<script>
+  document.addEventListener('alpine:init', () => {
+      Alpine.data('topBtn', () => ({
+          scrolltoTop() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+          }
+      }));
+  });
+  
+  var topBtn = document.getElementById("topButton");
+  window.onscroll = function () {
+      (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ?
+      topBtn.classList.remove("hidden"): topBtn.classList.add("hidden");
+  
+  }
+</script>
+<%= render "shared/footer" %>
