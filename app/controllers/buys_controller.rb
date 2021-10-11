@@ -13,7 +13,7 @@ class BuysController < ApplicationController
     if @buy_message.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵を記述しましょう
       Payjp::Charge.create(
-        amount: buys_params[:quantity], # 商品の値段
+        amount: buys_params[:quantity].to_i * buys_params[:unit_price].to_i, # 商品の値段
         card: buys_params[:token], # カードトークン
         currency: 'jpy' # 通貨の種類（日本円）
       )
