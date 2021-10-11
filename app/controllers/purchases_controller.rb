@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
 
   def create
     @wallet = Wallet.find(params[:wallet_id])
-    
+
     @purchase_statement = PurchaseStatement.new(purchases_params)
     if @purchase_statement.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']  # 自身のPAY.JPテスト秘密鍵を記述しましょう

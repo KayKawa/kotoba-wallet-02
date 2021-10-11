@@ -1,0 +1,144 @@
+<%= render "shared/second-header"%>
+<!-- Code on GiHub: https://github.com/vitalikda/form-floating-labels-tailwindcss -->
+<style>
+  .-z-1 {
+    z-index: -1;
+  }
+  
+  .origin-0 {
+    transform-origin: 0%;
+  }
+  
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label,
+  textarea:focus ~ label,
+  textarea:not(:placeholder-shown) ~ label,
+  select:focus ~ label,
+  select:not([value='']):valid ~ label {
+    /* @apply transform; scale-75; -translate-y-6; */
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate))
+      skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-scale-x: 0.75;
+    --tw-scale-y: 0.75;
+    --tw-translate-y: -1.5rem;
+  }
+  
+  input:focus ~ label,
+  select:focus ~ label {
+    /* @apply text-black; left-0; */
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+    left: 0px;
+  }
+</style>
+<div class="min-h-screen bg-gray-100 p-0 p-12">
+  <div class="flex justify-center mt-24">
+    <img alt="..." src="https://pbs.twimg.com/profile_images/1415911648326418433/dRCCHh7a_400x400.jpg" class="  rounded-full h-auto -m-20  w-40 border-4 border-white">
+  </div>
+  <div class="mx-auto container px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+    <h1 class="text-gray-700 text-2xl font-bold mb-8">
+      <%= @wallet.user.nickname%>
+      <span class="text-lg">さん<br>
+      </span>
+      KOTOBA購入
+    </h1>
+    <div class="flex justify-center mt-24">
+      <div class="transition duration-400 ease-in-out w-96 h-16 text-white p-4 bg-yellow-400 rounded-full shadow-xs cursor-pointer hover:bg-yellow-200 inline-flex items-center justify-center mb-10">
+        <div class="w-full flex flex-col justify-center">
+          <p class=" font-thin text-sm mt-5">現在</p>
+          <a href="#" class="flex items-center justify-center mb-5 outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8" viewBox="0 0 16 16">
+              <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+            </svg>
+            <p class=" text-4xl font-extrabold ml-6 mr-4 "><%= @wallet.stock_quantity %></p>
+            <p class="text-sm pt-3 ml-1 font-light">KOTOBA</p>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <%= form_with model: @buy_message,id: 'charge-form',url:wallet_buys_path,class:"w-1/2 mx-auto", local: true do |f| %>
+    <div class="relative z-0 w-full mb-5">
+      <%= f.text_area :message, class:"bg-yellow-400 placeholder-yellow-200 text-white block w-full h-56 mt-1 py-5 px-5 font-shippori font-bold text-2xl border-b leading-relaxed rounded-md shadow-sm focus:outline-none"%>
+    </div>
+    <div class="relative z-0 w-full mb-5">
+      <%= f.number_field :quantity, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",min:"0",pattern:"^[0-9]+$",required:" ",placeholder:" "%>
+      <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><path stroke-linecap="round" d="M25.15 7.74h25.66v48.52H13.19V20.6L25.15 7.74z"></path><path d="M25.17 7.74l-.02 12.86H13.19M18.34 47.67h17.01M18.34 41.14h27.01M18.34 35.04h27.01M18.34 28.94h27.01"></path></svg>
+      </div>
+      <%= f.label :quantity,"KOTOBA 購入数量の入力",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
+      <span class="text-sm text-red-600 hidden" id="error">KOTOBA is required</span>
+    </div>
+    <div class="relative z-0 w-full mb-5">
+      <%= f.number_field :unit_price, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",min:"0",pattern:"^[0-9]+$",required:" ",placeholder:" "%>
+      <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><path stroke-linecap="round" d="M25.15 7.74h25.66v48.52H13.19V20.6L25.15 7.74z"></path><path d="M25.17 7.74l-.02 12.86H13.19M18.34 47.67h17.01M18.34 41.14h27.01M18.34 35.04h27.01M18.34 28.94h27.01"></path></svg>
+      </div>
+      <%= f.label :unit_price,"KOTOBA :unit_priceの入力",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
+      <span class="text-sm text-red-600 hidden" id="error">KOTOBA is required</span>
+    </div>
+    <div class="relative z-0 w-full mb-5">
+      <%= f.text_field :number, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",required:" ",placeholder:" "%>
+      <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6"><path d="M12 14.85h40.9a4 4 0 014 4v26.28a4 4 0 01-4 4H11.12a4 4 0 01-4-4v-25.4A4.88 4.88 0 0112 14.85zM7.1 22.15h49.8M7.1 27.68h49.8"></path><path d="M48 36.81a3.5 3.5 0 00-2.14.75 3.45 3.45 0 00-2.13-.75 3.5 3.5 0 100 7 3.44 3.44 0 002.13-.74A3.5 3.5 0 1048 36.81z"></path></svg>
+      </div>
+      <%= f.label :number,"クレジットカード番号",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
+      <span class="text-sm text-red-600 hidden" id="error">KOTOBA is required</span>
+    </div>
+    <div class="relative z-0 w-full mb-5 flex">
+      <%= f.text_field :exp_month, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",required:" ",placeholder:" "%>
+      <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><rect x="9.59" y="9.59" width="44.82" height="44.82" rx="2.5"></rect><path d="M9.59 20.59h44.82M19.7 9.59v-5M43.66 9.59v-5M16.14 27.92h6.15v6.15h-6.15zM28.78 27.92h6.15v6.15h-6.15zM41.26 27.92h6.15v6.15h-6.15zM16.36 39.68h6.15v6.15h-6.15zM29.01 39.68h6.15v6.15h-6.15zM41.49 39.68h6.15v6.15h-6.15z"></path></svg>
+      </div>
+      <span class="text-sm text-red-600 hidden" id="error">month is required</span>
+      <%= f.text_field :exp_year, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",required:" ",placeholder:" "%>
+      <span class="text-sm text-red-600 hidden" id="error">year is required</span>
+    </div>
+    <div class="relative z-0 w-full mb-5">
+      <%= f.text_field :cvc, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",required:" ",placeholder:" "%>
+      <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><path d="M32.39 7.32L14 15a1 1 0 00-.61.92v16.31h0A22.87 22.87 0 0024.58 51.9l8.17 4.86 8.06-4.84A22.89 22.89 0 0051.9 32.31V15a1 1 0 00-.65-.94L33.12 7.3a1 1 0 00-.73.02z"></path><path d="M32.83 17.92l3.64 7.37a.16.16 0 00.1.08l8.14 1.18a.13.13 0 01.07.23l-5.88 5.73a.12.12 0 000 .12l1.39 8.1a.14.14 0 01-.2.15l-7.27-3.83a.15.15 0 00-.13 0l-7.27 3.83a.14.14 0 01-.2-.15l1.39-8.1a.15.15 0 000-.12l-5.88-5.73a.13.13 0 01.07-.23l8.13-1.18a.15.15 0 00.11-.08l3.63-7.37a.13.13 0 01.16 0z" stroke-linecap="round"></path></svg>
+      </div>
+      <%= f.label :cvc,"セキ���リティーコード",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
+      <span class="text-sm text-red-600 hidden" id="error">credit card is required</span>
+    </div>
+    <div class="border-0 border-b-2 pt-3 pb-2 pr-8 mb-5 text-right">
+      <span class="font-normal mr-3">お支���い金額���計(消費税込)￥</span>
+      <span class="text-4xl font-extrabold">10000</span>
+      <span class="text-4xl font-normal">-</span>
+    </div>
+    <div class="flex justify-center">
+      <%= f.submit "購入する" ,class:"text-3xl font-bold transition duration-500 ease-in-out w-96 h-16 text-white p-4 bg-yellow-400 rounded-full shadow-xs cursor-pointer hover:bg-yellow-200 inline-flex items-center justify-center",id:"buy-button" %>
+    </div>
+  <% end %>
+</div>
+</div>
+<!-- <script>
+  'use strict'
+  
+  document.getElementById('button').addEventListener('click', toggleError)
+  const errMessages = document.querySelectorAll('#error')
+  
+  function toggleError() {
+    // Show error message
+    errMessages.forEach((el) => {
+      el.classList.toggle('hidden')
+    })
+  
+    // Highlight input and label with red
+    const allBorders = document.querySelectorAll('.border-gray-200')
+    const allTexts = document.querySelectorAll('.text-gray-500')
+    allBorders.forEach((el) => {
+      el.classList.toggle('border-red-600')
+    })
+    allTexts.forEach((el) => {
+      el.classList.toggle('text-red-600')
+    })
+  }
+</script> -->
+<%= render "shared/second-footer"%>
