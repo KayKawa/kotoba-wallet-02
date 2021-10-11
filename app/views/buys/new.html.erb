@@ -55,7 +55,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8" viewBox="0 0 16 16">
               <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
             </svg>
-            <p class=" text-4xl font-extrabold ml-6 mr-4 "><%= @wallet.stock_quantity %></p>
+            <p class=" text-4xl font-extrabold ml-6 mr-4 " id="stock"><%= @wallet.stock_quantity %></p>
             <p class="text-sm pt-3 ml-1 font-light">KOTOBA</p>
           </p>
         </a>
@@ -65,21 +65,20 @@
   <%= form_with model: @buy_message,id: 'charge-form',url:wallet_buys_path,class:"w-1/2 mx-auto", local: true do |f| %>
     <div class="relative z-0 w-full mb-5">
       <%= f.text_area :message, class:"bg-yellow-400 placeholder-yellow-200 text-white block w-full h-56 mt-1 py-5 px-5 font-shippori font-bold text-2xl border-b leading-relaxed rounded-md shadow-sm focus:outline-none"%>
+      <span class="absolute px-2 py-1 text-xs text-white bg-blue-500 rounded right-2 bottom-2">
+        残り：<span id="balance-length"><%= @wallet.stock_quantity %></span>
+      </span>
+      <span class="absolute px-2 py-1 text-xs text-white bg-blue-500 rounded right-2 bottom-2 right-32">
+        現在：<span id="now-length">0</span>
+      </span>
     </div>
-    <div class="relative z-0 w-full mb-5">
-      <%= f.number_field :quantity, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",min:"0",pattern:"^[0-9]+$",required:" ",placeholder:" "%>
-      <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><path stroke-linecap="round" d="M25.15 7.74h25.66v48.52H13.19V20.6L25.15 7.74z"></path><path d="M25.17 7.74l-.02 12.86H13.19M18.34 47.67h17.01M18.34 41.14h27.01M18.34 35.04h27.01M18.34 28.94h27.01"></path></svg>
-      </div>
-      <%= f.label :quantity,"KOTOBA 購入数量の入力",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
-      <span class="text-sm text-red-600 hidden" id="error">KOTOBA is required</span>
-    </div>
+    <%= f.hidden_field :quantity %>
     <div class="relative z-0 w-full mb-5">
       <%= f.number_field :unit_price, class:"pt-3 pb-2 pl-10 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200",min:"0",pattern:"^[0-9]+$",required:" ",placeholder:" "%>
       <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><path stroke-linecap="round" d="M25.15 7.74h25.66v48.52H13.19V20.6L25.15 7.74z"></path><path d="M25.17 7.74l-.02 12.86H13.19M18.34 47.67h17.01M18.34 41.14h27.01M18.34 35.04h27.01M18.34 28.94h27.01"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><circle cx="32" cy="32" r="25.29"></circle><path stroke-linecap="round" d="M22.74 16.98l9.67 15.07 9.72-15.07M32.43 46.91V32.05M22.74 38.66h19.38M22.95 32.05h18.93"></path></svg>
       </div>
-      <%= f.label :unit_price,"KOTOBA :unit_priceの入力",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
+      <%= f.label :unit_price,"単価",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
       <span class="text-sm text-red-600 hidden" id="error">KOTOBA is required</span>
     </div>
     <div class="relative z-0 w-full mb-5">
@@ -104,12 +103,12 @@
       <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#374151" fill="none" class="w-6" ><path d="M32.39 7.32L14 15a1 1 0 00-.61.92v16.31h0A22.87 22.87 0 0024.58 51.9l8.17 4.86 8.06-4.84A22.89 22.89 0 0051.9 32.31V15a1 1 0 00-.65-.94L33.12 7.3a1 1 0 00-.73.02z"></path><path d="M32.83 17.92l3.64 7.37a.16.16 0 00.1.08l8.14 1.18a.13.13 0 01.07.23l-5.88 5.73a.12.12 0 000 .12l1.39 8.1a.14.14 0 01-.2.15l-7.27-3.83a.15.15 0 00-.13 0l-7.27 3.83a.14.14 0 01-.2-.15l1.39-8.1a.15.15 0 000-.12l-5.88-5.73a.13.13 0 01.07-.23l8.13-1.18a.15.15 0 00.11-.08l3.63-7.37a.13.13 0 01.16 0z" stroke-linecap="round"></path></svg>
       </div>
-      <%= f.label :cvc,"セキ���リティーコード",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
+      <%= f.label :cvc,"セキュリティーコード",class:"absolute duration-300 top-3 left-8 -z-1 origin-0 text-gray-500"%>
       <span class="text-sm text-red-600 hidden" id="error">credit card is required</span>
     </div>
     <div class="border-0 border-b-2 pt-3 pb-2 pr-8 mb-5 text-right">
-      <span class="font-normal mr-3">お支���い金額���計(消費税込)￥</span>
-      <span class="text-4xl font-extrabold">10000</span>
+      <span class="font-normal mr-3">お支い金額合計（消費税込）￥</span>
+      <span class="text-4xl font-extrabold" id="buy-total">0</span>
       <span class="text-4xl font-normal">-</span>
     </div>
     <div class="flex justify-center">

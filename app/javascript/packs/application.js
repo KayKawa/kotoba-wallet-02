@@ -7,5 +7,6 @@ require("channels");
 require("../purchase_card");
 require("../buy_card");
 require("../purchase_price");
+require("../buy_price");
 
 import "stylesheets/application"; // Add this line
