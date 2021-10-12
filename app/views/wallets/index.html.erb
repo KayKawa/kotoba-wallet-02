@@ -46,7 +46,7 @@
                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                   </svg>
-                  <p class="">7468</p>
+                  <p class=""><%= @buys.where(giver_id: [wallet.user_id]).count %></p>
                   <p class="text-xs ml-1 font-thin"></p>
                 </div>
                 <div class="w-1/2 inline-flex items-center">
@@ -54,7 +54,7 @@
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
                   </svg>
-                  <p class="">87410</p>
+                  <p class=""><%= @buys.where(giver_id: [wallet.user_id]).sum(:quantity) %></p>
                   <p class="text-xs ml-1 font-thin"></p>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                   </svg>
-                  <p class="">3879</p>
+                  <p class=""><%= @buys.where(taker_id: [wallet.user_id]).count %></p>
                   <p class="text-xs ml-1 font-thin"></p>
                 </div>
                 <div class="w-1/2 inline-flex items-center">
@@ -80,7 +80,7 @@
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
                   </svg>
-                  <p class="">38976</p>
+                  <p class=""><%= @buys.where(taker_id: [wallet.user_id]).sum(:quantity) %></p>
                   <p class="text-xs ml-1 font-thin"></p>
                 </div>
               </div>
