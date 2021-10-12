@@ -14,9 +14,7 @@
             <div class="w-full lg:w-4/12 lg:order-3 inline-flex justify-center">
               <%= link_to new_wallet_purchase_path(@wallet.id) , class: 'flex items-center justify-center' do %>
                 <div class="transition duration-400 ease-in-out w-96 h-16 text-white p-4 bg-yellow-400 rounded-full shadow-xs cursor-pointer hover:bg-yellow-200 inline-flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8" viewBox="0 0 16 16">
-                    <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
-                  </svg>
+                  <svg class="w-8" viewBox="0 0 330 330" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="#FFF"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
                   <p class=" text-3xl font-extrabold ml-6 mr-4 "><%= @wallet.stock_quantity %></p>
                   <p class="text-sm pt-1 ml-1 font-light">KOTOBA</p>
                   <svg class="ml-3 w-5 bg-blue-600 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="5" stroke="#ffffff" fill="none" class="duration-300 transform transition-all"><path d="M32 7v50M7 32h50"></path></svg>

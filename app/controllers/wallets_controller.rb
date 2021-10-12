@@ -5,6 +5,7 @@ class WalletsController < ApplicationController
 
   def show
     @wallet = Wallet.find(params[:id])
+    @find_give = @wallet
   end
 end
 

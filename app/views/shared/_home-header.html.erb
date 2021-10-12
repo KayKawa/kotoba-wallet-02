@@ -1,7 +1,7 @@
 <header>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
   <!-- nav bar -->
-  <nav class="w-full h-auto bg-gray-800 px-8 sm:px-0 fixed top-0 z-10">
+  <nav class="flex items-center w-full h-24 bg-gray-800 px-8 sm:px-0 fixed top-0 z-10">
     <div class="container flex items-center justify-between py-4 mx-auto">
       <%= link_to root_path do %>
         <div class="text-3xl font-extralight text-gray-100 flex">
@@ -14,130 +14,143 @@
         <div class="flex items-center">
           <!-- component -->
           <div class="group">
-            <button class="outline-none focus:outline-none py-1 bg-white rounded-sm flex items-center min-w-full bg-gray-800">
-              <div class="flex justify-center items-center space-x-3 cursor-pointer w-32">
-                <div class="w-16 rounded-full overflow-hidden border-2 border-yellow-300">
-                  <%= image_tag('cp-5.png', class:"w-full h-full object-cover")%>
+            <!-- ヘッダープロフィール＠スタート -->
+            <button class="outline-none focus:outline-none flex items-center bg-gray-800">
+              <div class="flex">
+                <div class="w-16 rounded-full overflow-hidden border-2 border-yellow-300 mr-3">
+                  <%= image_tag('cp-5.png')%>
                 </div>
-                <div class="font-bold text-gray-100 text-lg">
-                  <div class="cursor-pointer"><%=current_user.nickname%></div>
-                  <div class="cursor-pointer">@9576</div>
+                <div class="flex flex-col my-auto font-extrabold text-gray-100">
+                  <span><%=current_user.nickname%></span>
+                  <div class="flex mx-auto my-auto mt-1">
+                    <div class="p-1 bg-yellow-400 rounded-full mr-2">
+                      <svg class="w-4" viewBox="0 0 330 330" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="#FFF"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
+                    </div>
+                    <span class="my-auto"><%= current_user.wallet.stock_quantity %></span>
+                  </div>
                 </div>
               </div>
-            </span>
-            <svg
-        class="fill-current h-6 w-6 transform group-hover:-rotate-180
-        transition duration-150 ease-in-out"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        stroke="white"
-      >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-            </svg>
-          </button>
-          <ul
-    class="bg-white border-t-4 border-gray-800 hover:border-yellow-500 rounded-sm transform scale-0 group-hover:scale-100 absolute 
-  transition duration-150 ease-in-out origin-top w-44"
-  >
-            <li class="font-medium">
-              <a href="#" class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500">
-                <div class="mr-3">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                </div>
-                アカウント
-              </a>
-            </li>
-            <li class="font-medium">
-              <a href="#" class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500">
-                <div class="mr-3">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                設定
-              </a>
-            </li>
-            <hr class="dark:border-gray-700">
-            <li class="font-medium">
+              <svg class="ml-3 h-6 w-6 transform group-hover:-rotate-180 transition duration-150 ease-in-out" viewBox="0 0 20 20"stroke="white"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </button>
+            <!-- ヘッダープロフィール＠スタート -->
+            <ul class="bg-white border-t-4 border-gray-800 hover:border-yellow-500 rounded-lg transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
+              <%= link_to wallet_path(current_user.wallet.id) do%>
+                <li class="font-medium">
+                  <div class="flex w-52 rounded-sm p-2 transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500 tracking-widest">
+                    <svg class="w-5 mr-3" viewBox="0 0 330 330" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="black"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
+                    マイウォレット
+                  </div>
+                </li>
+              <% end %>
               <%= link_to destroy_user_session_path, method: :delete do%>
-                <div class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600">
-                  <div class="mr-3 text-red-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                <li class="font-medium">
+                  <div class="flex w-52 rounded-sm p-2 transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500 tracking-widest">
+                    <svg class="w-6 mr-3" viewBox="0 0 64 64" stroke-width="3" stroke="black" fill="none"><circle cx="31.89" cy="22.71" r="5.57"></circle><path d="M43.16 43.74a11.28 11.28 0 00-11.27-11.27h0a11.27 11.27 0 00-11.27 11.27z"></path><circle cx="48.46" cy="22.71" r="5.57"></circle><path d="M46.87 43.74h12.86a11.27 11.27 0 00-11.27-11.27h0a11.24 11.24 0 00-5.29 1.32"></path><circle cx="15.54" cy="22.71" r="5.57"></circle><path d="M17.13 43.74H4.27a11.27 11.27 0 0111.27-11.27h0a11.24 11.24 0 015.29 1.32"></path></svg>
+                    アカウント
                   </div>
-                  ログアウト
-                </div>
+                </li>
               <% end %>
-            </li>
-          </ul>
-        </div>
-      <% else %>
-        <!-- ドロップダウンメニュー＠未ログイン -->
-        <div class="flex items-center">
-          <!-- component -->
-          <div class="group">
-            <button class="outline-none focus:outline-none py-1 bg-white rounded-sm flex items-center min-w-full bg-gray-800">
-              <div class="flex justify-center items-center space-x-3 cursor-pointer w-32 ">
-                <div class="font-bold text-gray-100 text-lg">
-                  <div class="cursor-pointer">ログイン</div>
+              <hr class="dark:border-gray-700">
+              <%= link_to destroy_user_session_path, method: :delete do%>
+                <li class="font-medium">
+                  <div class="flex w-52 rounded-sm p-2 transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-500 tracking-widest">
+                    <svg class="w-6 mr-3" fill="none" stroke="red" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    ログアウト
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% else %>
+          <!-- ドロップダウンメニュー＠未ログイン -->
+          <div class="flex items-center">
+            <!-- component -->
+            <div class="group">
+              <button class="outline-none focus:outline-none flex items-center bg-gray-800">
+                <div class="flex">
+                  <div class="flex flex-col my-auto font-extrabold text-gray-100">
+                    <div class="flex mx-auto my-auto mt-1">
+                      ログイン
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </span>
-            <svg
-        class="fill-current h-6 w-6 transform group-hover:-rotate-180
-        transition duration-150 ease-in-out"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        stroke="white"
-      >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-            </svg>
-          </button>
-          <ul
+                <svg class="ml-3 h-6 w-6 transform group-hover:-rotate-180 transition duration-150 ease-in-out" viewBox="0 0 20 20"stroke="white"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </button>
+              <ul class="bg-white border-t-4 border-gray-800 hover:border-yellow-500 rounded-lg transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
+                <%= link_to new_user_session_path do%>
+                  <li class="font-medium">
+                    <div class="flex w-52 rounded-sm p-2 transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500 tracking-widest">
+                      <svg class="w-5 mr-3" viewBox="0 0 330 330" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="black"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
+                      マイウォレット
+                    </div>
+                  </li>
+                <% end %>
+                <%= link_to new_user_registration_path do%>
+                  <li class="font-medium">
+                    <div class="flex w-52 rounded-sm p-2 transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500 tracking-widest">
+                      <svg class="w-6 mr-3" viewBox="0 0 64 64" stroke-width="3" stroke="black" fill="none"><circle cx="31.89" cy="22.71" r="5.57"></circle><path d="M43.16 43.74a11.28 11.28 0 00-11.27-11.27h0a11.27 11.27 0 00-11.27 11.27z"></path><circle cx="48.46" cy="22.71" r="5.57"></circle><path d="M46.87 43.74h12.86a11.27 11.27 0 00-11.27-11.27h0a11.24 11.24 0 00-5.29 1.32"></path><circle cx="15.54" cy="22.71" r="5.57"></circle><path d="M17.13 43.74H4.27a11.27 11.27 0 0111.27-11.27h0a11.24 11.24 0 015.29 1.32"></path></svg>
+                      アカウント
+                    </div>
+                  </li>
+                <% end %>
+                <hr class="dark:border-gray-700">
+                <%= link_to destroy_user_session_path, method: :delete do%>
+                  <li class="font-medium">
+                    <div class="flex w-52 rounded-sm p-2 transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-500 tracking-widest">
+                      <svg class="w-6 mr-3" fill="none" stroke="red" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                      ログアウト
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+              <ul
     class="bg-white border-t-4 border-gray-800 hover:border-yellow-500 rounded-sm transform scale-0 group-hover:scale-100 absolute 
   transition duration-150 ease-in-out origin-top w-44"
   >
-            <li class="font-medium">
-              <%= link_to new_user_session_path do%>
-                <div class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500">
-                  <div class="mr-3">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                  </div>
-                  ログイン
-                </div>
-              <% end %>
-            </li>
-            <li class="font-medium">
-              <%= link_to new_user_registration_path do%>
-                <div class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500">
-                  <div class="mr-3">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                  </div>
-                  新規登録
-                </div>
-              <% end %>
-            </li>
-          </ul>
+                <li class="font-medium">
+                  <%= link_to new_user_session_path do%>
+                    <div class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500">
+                      <div class="mr-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                      </div>
+                      ログイン
+                    </div>
+                  <% end %>
+                </li>
+                <li class="font-medium">
+                  <%= link_to new_user_registration_path do%>
+                    <div class="p-2 flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-yellow-500">
+                      <div class="mr-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                      </div>
+                      新規登録
+                    </div>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </nav>
-  <!-- nav bar -->
-  <style>
-    /* since nested groupes are not supported we have to use
-       regular css for the nested dropdowns
-    */
-    li>ul                 { transform: translatex(100%) scale(0) }
-    li:hover>ul           { transform: translatex(101%) scale(1) }
-    li > button svg       { transform: rotate(-90deg) }
-    li:hover > button svg { transform: rotate(-270deg) }
-    
-    /* Below styles fake what can be achieved with the tailwind config
-       you need to add the group-hover variant to scale and define your custom
-       min width style.
-    	 See https://codesandbox.io/s/tailwindcss-multilevel-dropdown-y91j7?file=/index.html
-    	 for implementation with config file
-    */
-    .group:hover .group-hover\:scale-100 { transform: scale(1) }
-    .group:hover .group-hover\:-rotate-180 { transform: rotate(180deg) }
-    .scale-0 { transform: scale(0) }
-    .min-w-32 { min-width: 8rem }
-  </style>
-</header>
+      </nav>
+      <!-- nav bar -->
+      <style>
+        /* since nested groupes are not supported we have to use
+           regular css for the nested dropdowns
+        */
+        li>ul                 { transform: translatex(100%) scale(0) }
+        li:hover>ul           { transform: translatex(101%) scale(1) }
+        li > button svg       { transform: rotate(-90deg) }
+        li:hover > button svg { transform: rotate(-270deg) }
+        
+        /* Below styles fake what can be achieved with the tailwind config
+           you need to add the group-hover variant to scale and define your custom
+           min width style.
+        	 See https://codesandbox.io/s/tailwindcss-multilevel-dropdown-y91j7?file=/index.html
+        	 for implementation with config file
+        */
+        .group:hover .group-hover\:scale-100 { transform: scale(1) }
+        .group:hover .group-hover\:-rotate-180 { transform: rotate(180deg) }
+        .scale-0 { transform: scale(0) }
+        .min-w-32 { min-width: 8rem }
+      </style>
+    </header>
