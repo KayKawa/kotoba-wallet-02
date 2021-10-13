@@ -49,7 +49,7 @@
                   </div>
                   <span class="text-gray-400 text-sm pt-2 pl-2 border h-10 border-grey-light rounded-lg border-r-0 rounded-r-none rounded-l-none border-l-0">https://kotoba-wallet/wallets/</span>
                   <%= f.fields_for :wallet, Wallet.new do |f| %>
-                    <%= f.text_area :wallet_id, class:"resize-none pt-2 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded-lg pr-2 relative focus:border-blue focus:shadow rounded-l-none border-l-0",placeholder:"abcdef1234" %>
+                    <%= f.text_area :wallet_name, class:"resize-none pt-2 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded-lg pr-2 relative focus:border-blue focus:shadow rounded-l-none border-l-0",placeholder:"abcdef1234" %>
                     <%= f.hidden_field :stock_quantity, value: 0 %>
                   <% end %>
                 </div>
