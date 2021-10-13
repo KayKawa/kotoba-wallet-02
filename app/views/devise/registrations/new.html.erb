@@ -1,87 +1,190 @@
 <%= render "shared/second-header"%>
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
-  <div class="container max-w-full mx-auto py-2 px-6">
-    <div class="font-sans">
-      <div class="max-w-sm mx-auto px-6">
-        <div class="relative flex flex-wrap">
-          <div class="w-full relative">
-            <form class="mt-8">
-              <div class="mx-auto max-w-lg">
-                <div class="py-2">
-                  <label class="px-1 text-sm text-gray-600">メールアドレス（ログインID）</label>
-                  <%= f.email_field :email, class:"text-md block px-3 py-2  rounded-lg w-full 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
-                </div>
-                <div class="py-2">
-                  <label class="px-1 text-sm text-gray-600">ご希望のパスワード</label>
-                  <%= f.password_field :password, class:"text-md block px-3 py-2  rounded-lg w-full 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
-                </div>
-                <div class="py-2">
-                  <label class="px-1 text-sm text-gray-600">パスワードの確認</label>
-                  <%= f.password_field :password_confirmation, class:"text-md block px-3 py-2  rounded-lg w-full 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
-                </div>
-                <div class="py-2">
-                  <span class="px-1 text-sm text-gray-600">ニックネーム</span>
-                  <%= f.text_area :nickname, class:"resize-none h-11 text-md block px-3 py-2  rounded-lg w-full 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"xxxxxx@xxxx.com" %>
-                </div>
-                <div class="py-2">
-                  <span class="px-1 text-sm text-gray-600">性別</span>
-                  <div class="flex justify-center flex-wrap">
-                    <%= f.radio_button :gender_id, '1' ,class:"form-radio h-5 w-5 text-yellow-500 outline-none",checked: true %>
-                    <%= f.label :gender_id, '男性', :value => '1' ,class:"pl-3 pr-3 text-gray-700 outline-none"%>
-                    <%= f.radio_button :gender_id, '2',class:"form-radio h-5 w-5 text-yellow-500" %>
-                    <%= f.label :gender_id, '女性', :value => '2' ,class:"pl-3 pr-3 text-gray-700"%>
-                    <%= f.radio_button :gender_id, '3',class:"form-radio h-5 w-5 text-yellow-500" %>
-                    <%= f.label :gender_id, '選択しない', :value => '3' ,class:"pl-3 pr-3 text-gray-700"%>
+  <div class="bg-gray-100 relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-xl w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
+      <div class="grid  gap-8 grid-cols-1">
+        <div class="flex flex-col ">
+          <div class="flex flex-col sm:flex-row items-center">
+            <h2 class="font-semibold text-lg mr-auto">メンバー登録情報</h2>
+          </div>
+          <div class="mt-5">
+            <div class="form">
+              <!--プロフィール画像s-->
+              <div class="md:space-y-2 mb-3">
+                <div class="flex flex-col items-center py-6">
+                  <div class="w-32 h-32 flex-none rounded-full border-2 border-yellow-400 overflow-hidden mb-3">
+                    <ion-icon name="person" class="w-full h-full text-gray-600"></ion-icon>
                   </div>
-                  <div class="py-2">
-                    <span class="px-1 text-sm text-gray-600">氏名（全角）</span>
-                    <div class="flex justify-center flex-wrap">
-                      <%= f.text_area :last_name, class:"resize-none h-11 text-md block px-3 py-2  rounded-lg w-1/2 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"xxxxxx@xxxx.com" %>
-                      <%= f.text_area :first_name, class:"resize-none h-11 text-md block px-3 py-2  rounded-lg w-1/2 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"xxxxxx@xxxx.com" %>
-                    </div>
-                  </div>
-                  <div class="py-2">
-                    <span class="px-1 text-sm text-gray-600">フリガナ（全角）</span>
-                    <div class="flex justify-center flex-wrap">
-                      <%= f.text_area :last_kana, class:"resize-none h-11 text-md block px-3 py-2  rounded-lg w-1/2 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"xxxxxx@xxxx.com" %>
-                      <%= f.text_area :first_kana, class:"resize-none h-11 text-md block px-3 py-2  rounded-lg w-1/2 
-                bg-white border-2 border-yellow-500 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none", id:"email", placeholder:"xxxxxx@xxxx.com" %>
-                    </div>
-                  </div>
-                  <div class="py-2">
-                    <span class="px-1 text-sm text-gray-600">フリガナ（全角）</span>
-                    <div class="flex justify-center flex-wrap input-birth-wrap">
-                      <div class='flex flex-wrap'>
-                        <%= raw sprintf(
-                  f.date_select(
-                    :birthday,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-                      </div>
-                    </div>
-                    <%= f.fields_for :wallet, Wallet.new do |f| %>
-                      <%= f.hidden_field :stock_quantity, value: 0 %>
-                    <% end %>
-                    <%= f.submit "ログイン" ,class:"mt-3 text-lg font-semibold 
-                bg-gray-800 w-full text-white rounded-lg
-                px-6 py-3 block shadow-xl hover:text-white hover:bg-black" %>
-                  </div>
-                </form>
+                  <label class="cursor-pointer ">
+                    <span class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:shadow-lg">
+                      プロフィール画像
+                      <abbr class="text-red-500 ml-1" title="required field">*</abbr>
+                    </span>
+                    <input type="file" class="hidden" :multiple="multiple" :accept="accept">
+                  </label>
+                </div>
               </div>
+              <!--プロフィール画像e-->
+              <!--ニックネームs-->
+              <div class="mb-3 space-y-2 w-full text-sm">
+                <label class="font-semibold text-gray-600 py-2">ニックネーム<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                  <div class="flex">
+                    <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                      <ion-icon name="mail" class="w-full h-full"></ion-icon>
+                    </span>
+                  </div>
+                  <%= f.text_area :nickname, class:"resize-none pt-3 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow", placeholder:"ニックネーム", autofocus: true %>
+                </div>
+              </div>
+              <!--ニックネームe-->
+              <!--ウォレットIDs-->
+              <div class="mb-3 space-y-2 w-full text-sm">
+                <label class="font-semibold text-gray-600 py-2">WALLET ID<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                  <div class="flex">
+                    <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                      <ion-icon name="mail" class="w-full h-full"></ion-icon>
+                    </span>
+                  </div>
+                  <span class="text-gray-400 text-sm pt-2 pl-2 border h-10 border-grey-light rounded-lg border-r-0 rounded-r-none rounded-l-none border-l-0">https://kotoba-wallet/wallets/</span>
+                  <%= f.text_area :nickname, class:"resize-none pt-2 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded-lg pr-2 relative focus:border-blue focus:shadow rounded-l-none border-l-0",placeholder:"abcdef1234" %>
+                </div>
+              </div>
+              <!--ウォレットIDe-->
+              <!--メールアドレスs-->
+              <div class="mb-3 space-y-2 w-full text-sm">
+                <label class="font-semibold text-gray-600 py-2">メールアドレス<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                  <div class="flex">
+                    <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                      <ion-icon name="mail" class="w-full h-full"></ion-icon>
+                    </span>
+                  </div>
+                  <%= f.email_field :email, class:"flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow", placeholder:"abcdef1234@kotoba.com" %>
+                </div>
+              </div>
+              <!--メールアドレスe-->
+              <!--パスワードs-->
+              <div class="flex flex-row space-x-4 w-full text-sm">
+                <div class="mb-3 space-y-2 w-1/2 text-sm">
+                  <label class=" font-semibold text-gray-600 py-2">ご希望のパスワード<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <div class="flex">
+                      <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                        <ion-icon name="key-outline" class="w-full h-full"></ion-icon>
+                      </span>
+                    </div>
+                    <%= f.password_field :password, class:"flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow", placeholder:"******" %>
+                  </div>
+                </div>
+                <div class="mb-3 space-y-2 w-1/2 text-sm">
+                  <label class=" font-semibold text-gray-600 py-2">パスワードの確認<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <div class="flex">
+                      <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                        <ion-icon name="key" class="w-full h-full"></ion-icon>
+                      </span>
+                    </div>
+                    <%= f.password_field :password_confirmation, class:"flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow", placeholder:"******" %>
+                  </div>
+                </div>
+              </div>
+              <!--パスワードe-->
+              <!--氏名s-->
+              <div class="flex flex-row space-x-4 w-full text-sm">
+                <div class="mb-3 space-y-2 w-1/2 text-sm">
+                  <label class=" font-semibold text-gray-600 py-2">氏名[全角]<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <div class="flex">
+                      <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                        <ion-icon name="person-circle" class="w-full h-full"></ion-icon>
+                      </span>
+                    </div>
+                    <%= f.text_area :last_name, class:"resize-none pt-3 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow", placeholder:"川畑" %>
+                  </div>
+                </div>
+                <div class="mb-3 space-y-2 w-1/2 text-sm">
+                  <label class=" font-semibold text-gray-600 py-2"><abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <div class="flex">
+                    </div>
+                    <%= f.text_area :first_name, class:"resize-none pt-3 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded-lg px-3 relative focus:border-blue focus:shadow", placeholder:"翼" %>
+                  </div>
+                </div>
+              </div>
+              <!--氏名e-->
+              <!--シメイs-->
+              <div class="flex flex-row space-x-4 w-full text-sm">
+                <div class="mb-3 space-y-2 w-1/2 text-sm">
+                  <label class=" font-semibold text-gray-600 py-2">氏名フリガナ[全角]<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <div class="flex">
+                      <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                        <ion-icon name="person-circle" class="w-full h-full"></ion-icon>
+                      </span>
+                    </div>
+                    <%= f.text_area :last_kana, class:"resize-none pt-3 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow", placeholder:"カワバタ" %>
+                  </div>
+                </div>
+                <div class="mb-3 space-y-2 w-1/2 text-sm">
+                  <label class=" font-semibold text-gray-600 py-2"><abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <div class="flex">
+                    </div>
+                    <%= f.text_area :first_kana, class:"resize-none pt-3 flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded-lg px-3 relative focus:border-blue focus:shadow", placeholder:"ツバサ" %>
+                  </div>
+                </div>
+              </div>
+              <!--シメイe-->
+              <!--生年月日s-->
+              <div class="mb-3 space-y-2 w-full text-sm">
+                <label class="font-semibold text-gray-600 py-2">生年月日<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                  <div class="flex">
+                    <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-yellow-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-yellow-300 justify-center items-center  text-xl rounded-lg text-white">
+                      <ion-icon name="calendar" class="w-full h-full"></ion-icon>
+                    </span>
+                  </div>
+                  <%= f.date_field :birthday, class:"flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" %>
+                </div>
+              </div>
+              <!--生年月日e-->
+              <!-- 性別s -->
+              <div class="mb-3 space-y-2 w-full text-sm">
+                <label class="font-semibold text-gray-600 py-2">性別<abbr class="text-red-500 ml-1" title="required field">*</abbr></label>
+                <div class="flex justify-between">
+                  <style>
+                    input:checked ~ .radio {
+                      color:white;
+                      background-color: #FCD34D;
+                    }
+                  </style>
+                  <div class="inline-flex rounded-lg h-9">
+                    <%= f.radio_button :gender_id, '1' ,class:"hidden",checked: true ,tabindex:"1"%>
+                    <%= f.label :gender_id, :value => '1' ,class:"radio text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:opacity-60" do%>
+                      <ion-icon name="man" class="w-5 h-5"></ion-icon>男性
+                    <% end %>
+                  </div>
+                  <div class="inline-flex rounded-lg h-9">
+                    <%= f.radio_button :gender_id, '2' ,class:"hidden" ,tabindex:"2"%>
+                    <%= f.label :gender_id, :value => '2' ,class:"radio text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:opacity-60" do%>
+                      <ion-icon name="woman" class="w-5 h-5"></ion-icon>女性
+                    <% end %>
+                  </div>
+                  <div class="inline-flex rounded-lg h-9">
+                    <%= f.radio_button :gender_id, '3' ,class:"hidden",tabindex:"3" %>
+                    <%= f.label :gender_id, :value => '3' ,class:"radio text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:opacity-60" do%>
+                      <ion-icon name="ban" class="w-5 h-5 mr-1"></ion-icon>選択しない
+                    </div>
+                  </div>
+                </div>
+                <!-- 性別e -->
+                <%= f.fields_for :wallet, Wallet.new do |f| %>
+                  <%= f.hidden_field :stock_quantity, value: 0 %>
+                <% end %>
+                <%= f.submit "メンバーになる" ,class:"mt-8 text-sm font-semibold bg-gray-800 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:text-white hover:bg-gray-900" %>
+              <% end %>
             </div>
           </div>
         </div>
