@@ -1,2 +1,219 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<%= render "shared/loggedin-header" %>
+<main class="block mt-24">
+  <div class="w-full h-96 bg-gray-100"></div>
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <div class=" flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+        <div class="px-6  lg:pt-4 pt-10">
+          <div class="flex flex-wrap ">
+            <div class="w-full lg:w-4/12 lg:order-2 flex justify-center">
+              <div class=" h-20">
+                <img alt="..." src="https://pbs.twimg.com/profile_images/1415911648326418433/dRCCHh7a_400x400.jpg" class="relative bottom-40 rounded-full h-auto w-64 border-4 border-white">
+              </div>
+            </div>
+            <div class="w-full lg:w-4/12 lg:order-3 inline-flex justify-center">
+              <%= link_to new_wallet_purchase_path(@wallet.id) , class: 'flex items-center justify-center' do %>
+                <div class="transition duration-400 ease-in-out w-96 h-16 text-white p-4 bg-yellow-400 rounded-full shadow-xs cursor-pointer hover:bg-yellow-200 inline-flex items-center justify-center">
+                  <svg class="w-8" viewBox="0 0 330 330" version="1.1"><defs></defs><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="logo_white" fill="#FFF"><g id="Page-1"><polygon id="Fill-1" points="61.876 330 247.5 330 247.5 309.375 61.876 309.375"></polygon><polygon id="Fill-2" points="0 268.125 330 268.125 330 247.5 0 247.5"></polygon><polygon id="Fill-3" points="123.75 206.25 299.063 206.25 299.063 185.625 123.75 185.625"></polygon><polygon id="Fill-4" points="30.938 144.375 206.25 144.375 206.25 123.75 30.938 123.75"></polygon><polygon id="Fill-5" points="0 82.5 330 82.5 330 61.875 0 61.875"></polygon><polygon id="Fill-6" points="82.5 20.625 268.125 20.625 268.125 0 82.5 0"></polygon></g></g></g></svg>
+                  <p class=" text-3xl font-extrabold ml-6 mr-4 "><%= @wallet.stock_quantity %></p>
+                  <p class="text-sm pt-1 ml-1 font-light">KOTOBA</p>
+                  <svg class="ml-3 w-5 bg-blue-600 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="5" stroke="#ffffff" fill="none" class="duration-300 transform transition-all"><path d="M32 7v50M7 32h50"></path></svg>
+                </div>
+              <% end %>
+            </div>
+            <div class="w-full lg:w-4/12 lg:order-1 inline-flex justify-center">
+              <%= link_to new_wallet_buy_path(@wallet.id) , class: 'flex items-center justify-center' do %>
+                <div class="transition duration-500 ease-in-out w-96 h-16 text-white p-4 bg-yellow-400 rounded-full shadow-xs cursor-pointer hover:bg-yellow-200 inline-flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10" viewBox="0 0 64 64" stroke-width="3" stroke="white" fill="none"><path d="M15.68,52.5,8.27,41.35a1.21,1.21,0,0,1,.34-1.67l4.68-3a1.2,1.2,0,0,1,1.64.32l7.56,11a1.21,1.21,0,0,1-.32,1.68l-4.82,3.23A1.2,1.2,0,0,1,15.68,52.5Z" stroke-linecap="round"/><path d="M15.76,38.14l7.8-4.91a2.21,2.21,0,0,1,1.7-.27c2.77.72,11.1,3,14.17,4.08,2.31.81,3.24,3.09,2.31,4.6-1.26,2-3.18,1.8-4.56,1.41a3.62,3.62,0,0,1-.55-.2l-5.46-2.32" stroke-linecap="round"/><path d="M21.81,47l2.55-1.46,14.43,4a1.09,1.09,0,0,0,.88-.14c2-1.31,10.71-7.07,15-10.1a2.4,2.4,0,0,0,.3-4,3.1,3.1,0,0,0-3.71-.32c-1.5.84-5.67,3.93-5.67,3.93" stroke-linecap="round"/><path d="M30.39,17.55A5.48,5.48,0,0,1,35.53,11c3.09-.25,4.61,3.48,4.91,4.19a.06.06,0,0,0,.11,0c1.43-3.93,4-4.09,5-4.19,2.47-.25,5.77,1.65,5.08,6.09-.94,6.18-10.16,13.11-10.16,13.11S31.59,24.19,30.39,17.55Z"/></svg>
+                  <p class=" text-2xl font-extrabold ml-6 mr-4 ">気持ちを贈る</p>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-center mt-12">
+          <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+            <%= @wallet.user.nickname%>
+          </h3>
+          <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+            <span class="mr-3 ">@TsubasaKawabata</span><span class="mr-3 border-r border-gray-600  max-h-0"></span>
+            <i class="fas fa-map-marker-alt mr-2 text-sm text-blueGray-400"></i><span>Tokyo,JPN</span>
+          </div>
+          <div class="flex flex-wrap justify-center gap-2 my-3">
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" /></svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#ffffff" fill="none" class="duration-300 transform transition-all" ><path d="M52.46 26.64c-1.15.25-4.74.65-9.7-2.41a.5.5 0 00-.77.42v13.33c0 2.68.15 20.4-17.16 18.42 0 0-13.68-1-13.68-16.33 0 0 .19-13.8 16.42-15a.51.51 0 01.55.5v7.03a.48.48 0 01-.42.49c-1.9.27-9.54 1.8-8.69 8.77a7.19 7.19 0 007.37 6.3s7 .78 7.32-9V7.94a.51.51 0 01.5-.5h6.88a.5.5 0 01.49.41c.36 2 2.42 9.82 10.8 10.31a.5.5 0 01.48.49v7.51a.48.48 0 01-.39.48z" stroke-linecap="round"></path></svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.5" stroke="#ffffff" fill="none" class="duration-300 transform transition-all" style="width: 20px; height: 20px;"><rect x="13.8" y="13.02" width="36.4" height="37.97" rx="10.53" stroke-linecap="round"></rect><circle cx="32" cy="32" r="9.28" stroke-linecap="round"></circle><circle cx="43.11" cy="19.74" r="1.32"></circle></svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" /></svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <%= image_tag('4dc2d7ff-036a-4064-bc18-3d3b8ef75a90.png', class:"w-5 h-5 ") %>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" /></svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5 fill-current" viewBox="100 100 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="white/logo_symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <path d="M180.388501,169.6969 L180.388501,155.318324 C180.388501,152.698052 180.524171,151.824229 180.927578,150.479979 C182.005733,146.784785 185.646008,144.030448 189.958629,144.030448 C194.27125,144.030448 197.910324,146.851818 198.988479,150.479979 C199.393087,151.824229 199.528757,152.698052 199.528757,155.318324 L199.528757,177.490682 C199.528757,178.834933 199.528757,180.177986 199.258618,181.388171 C198.517837,184.747003 195.485075,187.771866 192.114939,188.510426 C190.902315,188.778558 189.554021,188.778558 188.205726,188.778558 L165.966674,188.778558 C163.33852,188.778558 162.462069,188.644492 161.113775,188.241097 C157.474701,187.166175 154.644843,183.538015 154.644843,179.238327 C154.644843,174.937443 157.474701,171.309283 161.113775,170.234361 C162.462069,169.830966 163.33852,169.6969 165.966674,169.6969 L180.388501,169.6969 Z M259.642514,270.215259 L140.357486,270.215259 L140.357486,165.464245 C140.357486,164.119995 140.829329,162.97804 141.773015,162.037184 L172.705744,131.196024 C173.64943,130.256366 174.79482,129.785938 176.143114,129.785938 L259.642514,129.785938 L259.642514,270.215259 Z M273.18909,106.134066 C272.582778,106.067033 271.773561,106 270.223563,106 L172.974683,106 C171.897728,106 170.819573,106.067033 170.077591,106.134066 C165.6293,106.537461 161.652852,108.620272 158.485621,111.778004 L122.295384,147.859707 C119.129354,151.018637 117.039078,154.981962 116.63567,159.416912 C116.567235,160.155472 116.5,161.230394 116.5,162.305316 L116.5,280.763379 C116.5,282.308729 116.567235,283.115519 116.63567,283.720012 C117.173547,288.759457 121.756307,293.327276 126.81091,293.864737 C127.418423,293.932967 128.226439,294 129.776437,294 L270.223563,294 C271.773561,294 272.582778,293.932967 273.18909,293.864737 C278.243693,293.327276 282.826453,288.759457 283.365531,283.720012 C283.431565,283.115519 283.5,282.308729 283.5,280.763379 L283.5,119.236621 C283.5,117.691271 283.431565,116.884481 283.365531,116.279988 C282.826453,111.240543 278.243693,106.671527 273.18909,106.134066 Z" id="Shape" fill="#FFFFFF"></path>
+                </g>
+              </svg>
+            </button>
+            <button class="bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+              <svg class="w-5 h-5" viewBox="0 10 90 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 0C20.151 0 0 20.151 0 45C0 69.849 20.151 90 45 90C69.849 90 90 69.849 90 45C90 20.151 69.858 0 45 0ZM22.203 46.512L22.392 46.206L34.101 27.891C34.272 27.63 34.677 27.657 34.803 27.945C36.756 32.328 38.448 37.782 37.656 41.175C37.323 42.57 36.396 44.46 35.352 46.206C35.217 46.458 35.073 46.71 34.911 46.953C34.839 47.061 34.713 47.124 34.578 47.124H22.545C22.221 47.124 22.032 46.773 22.203 46.512ZM74.376 52.812C74.376 52.983 74.277 53.127 74.133 53.19C73.224 53.577 70.119 55.008 68.832 56.799C65.538 61.38 63.027 67.932 57.402 67.932H33.948C25.632 67.932 18.9 61.173 18.9 52.83V52.56C18.9 52.344 19.08 52.164 19.305 52.164H32.373C32.634 52.164 32.823 52.398 32.805 52.659C32.706 53.505 32.868 54.378 33.273 55.17C34.047 56.745 35.658 57.726 37.395 57.726H43.866V52.677H37.467C37.143 52.677 36.945 52.299 37.134 52.029C37.206 51.921 37.278 51.813 37.368 51.687C37.971 50.823 38.835 49.491 39.699 47.97C40.284 46.944 40.851 45.846 41.31 44.748C41.4 44.55 41.472 44.343 41.553 44.145C41.679 43.794 41.805 43.461 41.895 43.137C41.985 42.858 42.066 42.57 42.138 42.3C42.354 41.364 42.444 40.374 42.444 39.348C42.444 38.943 42.426 38.52 42.39 38.124C42.372 37.683 42.318 37.242 42.264 36.801C42.228 36.414 42.156 36.027 42.084 35.631C41.985 35.046 41.859 34.461 41.715 33.876L41.661 33.651C41.553 33.246 41.454 32.868 41.328 32.463C40.959 31.203 40.545 29.97 40.095 28.818C39.933 28.359 39.753 27.918 39.564 27.486C39.294 26.82 39.015 26.217 38.763 25.65C38.628 25.389 38.52 25.155 38.412 24.912C38.286 24.642 38.16 24.372 38.025 24.111C37.935 23.913 37.827 23.724 37.755 23.544L36.963 22.086C36.855 21.888 37.035 21.645 37.251 21.708L42.201 23.049H42.219C42.228 23.049 42.228 23.049 42.237 23.049L42.885 23.238L43.605 23.436L43.866 23.508V20.574C43.866 19.152 45 18 46.413 18C47.115 18 47.754 18.288 48.204 18.756C48.663 19.224 48.951 19.863 48.951 20.574V24.939L49.482 25.083C49.518 25.101 49.563 25.119 49.599 25.146C49.725 25.236 49.914 25.38 50.148 25.56C50.337 25.704 50.535 25.884 50.769 26.073C51.246 26.46 51.822 26.955 52.443 27.522C52.605 27.666 52.767 27.81 52.92 27.963C53.721 28.71 54.621 29.583 55.485 30.555C55.728 30.834 55.962 31.104 56.205 31.401C56.439 31.698 56.7 31.986 56.916 32.274C57.213 32.661 57.519 33.066 57.798 33.489C57.924 33.687 58.077 33.894 58.194 34.092C58.554 34.623 58.86 35.172 59.157 35.721C59.283 35.973 59.409 36.252 59.517 36.522C59.85 37.26 60.111 38.007 60.273 38.763C60.327 38.925 60.363 39.096 60.381 39.258V39.294C60.435 39.51 60.453 39.744 60.471 39.987C60.543 40.752 60.507 41.526 60.345 42.3C60.273 42.624 60.183 42.93 60.075 43.263C59.958 43.578 59.85 43.902 59.706 44.217C59.427 44.856 59.103 45.504 58.716 46.098C58.59 46.323 58.437 46.557 58.293 46.782C58.131 47.016 57.96 47.241 57.816 47.457C57.609 47.736 57.393 48.024 57.168 48.285C56.97 48.555 56.772 48.825 56.547 49.068C56.241 49.437 55.944 49.779 55.629 50.112C55.449 50.328 55.251 50.553 55.044 50.751C54.846 50.976 54.639 51.174 54.459 51.354C54.144 51.669 53.892 51.903 53.676 52.11L53.163 52.569C53.091 52.641 52.992 52.677 52.893 52.677H48.951V57.726H53.91C55.017 57.726 56.07 57.339 56.925 56.61C57.213 56.358 58.482 55.26 59.985 53.604C60.039 53.541 60.102 53.505 60.174 53.487L73.863 49.527C74.124 49.455 74.376 49.644 74.376 49.914V52.812V52.812Z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+          <!-- copy start -->
+          <div class="w-1/2 inline-flex justify-center mt-1  text-lg text-gray-500 rounded-full rounded-full border border-gray-600">
+            <div class="w-full flex justify-center items-baseline py-2">
+              <span class="text-xs font-extralight  text-center ">
+                これまで
+              </span>
+              <p class="mx-2"><%= @give_count%></p>
+              <span class="text-xs font-extralight  text-center ">
+                人に
+              </span>
+              <p class="mx-2"><%= @give_quant %></p>
+              <span class="text-xs font-extralight  text-center ">
+                KOTOBA贈りました。
+              </span>
+              <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="16" stroke="#2563EB" fill="none" class="duration-300 transform transition-all"><path d="M18.86 57.47l25.26-26.63L18.86 6.58"></path></svg>
+            </div>
+          </div>
+          <!-- copy end -->
+          <!-- copy start -->
+          <div class="w-1/2 inline-flex justify-center mt-1  text-lg text-gray-500 rounded-full rounded-full border border-gray-600">
+            <div class="w-full flex justify-center items-baseline  py-2">
+              <span class="text-xs font-extralight text-center ">
+                これまで
+              </span>
+              <p class="mx-2"><%= @take_count %></p>
+              <span class="text-xs font-extralight  text-center ">
+                人から
+              </span>
+              <p class="mx-2"><%= @take_quant %></p>
+              <span class="text-xs font-extralight  text-center ">
+                KOTOBA受け取りました。
+              </span>
+              <svg class="w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="16" stroke="#2563EB" fill="none" class="duration-300 transform transition-all"><path d="M18.86 57.47l25.26-26.63L18.86 6.58"></path></svg>
+            </div>
+          </div>
+          <!-- copy end -->
+        </div>
+        <div class="mt-10 py-10 border-t border-blueGray-200 ">
+          <div class="flex flex-wrap justify-center">
+            <div class="w-full lg:w-9/12 px-4">
+              <!--メッセージカード スタート-->
+              <!--
+Author: Mostafa Ahangarha
+License: MIT
+Version: v1.1
+-->
+              <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+              <div class="w-full mx-auto my-auto">
+                <!--actual component start-->
+                <div x-data="setup()">
+                  <ul class="flex justify-center items-center my-4">
+                    <template x-for="(tab, index) in tabs" :key="index">
+                      <li class="cursor-pointer py-2 px-4 text-gray-500 border-b-8"
+					:class="activeTab===index ? 'text-yellow-500 border-yellow-500' : ''" @click="activeTab = index"
+					x-text="tab"></li>
+                    </template>
+                  </ul>
+                  <div class="w-full rounded-xl bg-gray-100 text-center mx-auto p-10">
+                    <div x-show="activeTab===0">
+                      <div class="flex flex-wrap">
+                        <% @send_message.each do |m| %>
+                          <!--贈ったKOTOBA コンテナ スタート-->
+                          <div class="w-1/2 p-4">
+                            <div class="-mb-16 ml-2">
+                              <img class="h-32 w-32 bg-white p-2 rounded-full   " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
+                            </div>
+                            <div class="bg-white shadow-lg p-5 rounded-xl h-96">
+                              <div class="text-center px-14">
+                                <h2 class="text-gray-800 text-3xl font-bold"><%= m.receiver.nickname %></h2>
+                                <p class="text-gray-400 mt-2">@immohitdhiman</p>
+                                <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
+                              </div>
+                            </div>
+                          </div>
+                          <!--贈ったKOTOBA コンテナ スタート-->
+                        <% end %>
+                      </div>
+                    </div>
+                    <div x-show="activeTab===1">
+                      <div class="flex flex-wrap">
+                        <% @receive_message.each do |m| %>
+                          <!--貰ったKOTOBA コンテナ スタート-->
+                          <div class="w-1/2 p-4">
+                            <div class="-mb-16 ml-2">
+                              <img class="h-32 w-32 bg-white p-2 rounded-full   " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
+                            </div>
+                            <div class="bg-white shadow-lg p-5 rounded-xl h-96">
+                              <div class="text-center px-14">
+                                <h2 class="text-gray-800 text-3xl font-bold"><%= m.sender.nickname %></h2>
+                                <p class="text-gray-400 mt-2">@immohitdhiman</p>
+                                <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
+                              </div>
+                            </div>
+                          </div>
+                          <!--貰ったKOTOBA コンテナ スタート-->
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="flex justify-center items-center my-4">
+                    <template x-for="(tab, index) in tabs" :key="index">
+                      <li class="cursor-pointer py-3 px-4 rounded transition"
+					:class="activeTab===index ? 'bg-yellow-500 text-white' : ' text-gray-500'" @click="activeTab = index"
+					x-text="tab"></li>
+                    </template>
+                  </ul>
+                </div>
+                <!--actual component end-->
+              </div>
+              <script>
+                function setup() {
+                    return {
+                      activeTab: 0,
+                      tabs: [
+                          "贈ったKOTOBA",
+                          "貰ったKOTOBA",
+                      ]
+                    };
+                  };
+              </script>
+              <!--
+# Changelog:
+
+## [1.1] - 2021-05-01
+### Added
+ - Back/Next buttons
+
+## [1.0] - 2021-05-01
+### Added
+ - Nav bar with two styles
+ - Set tabs title dynamically and render on page
+-->
+              <!--メッセージカード エンド-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</main>
+<%= render "shared/footer" %>

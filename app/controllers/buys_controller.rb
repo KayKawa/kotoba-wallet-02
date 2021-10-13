@@ -10,6 +10,7 @@ class BuysController < ApplicationController
     @statement = Statement.create(minus: params[:quantity].to_i, wallet_id: params[:wallet_id])
     # 購入情報を保存
     @buy_message = BuyMessage.new(buys_params)
+
     if @buy_message.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵を記述しましょう
       Payjp::Charge.create(
@@ -18,6 +19,7 @@ class BuysController < ApplicationController
         currency: 'jpy' # 通貨の種類（日本円）
       )
       @buy_message.save
+
       redirect_to wallets_path
     else
       render :new
