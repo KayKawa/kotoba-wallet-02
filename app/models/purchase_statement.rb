@@ -1,7 +1,7 @@
 # Formオブジェクト
 class PurchaseStatement
   include ActiveModel::Model
-  attr_accessor :wallet_id, :statement_id, :quantity, :plus, :stock_quantity, :token
+  attr_accessor :wallet_id, :statement_id, :quantity, :plus, :stock_quantity, :token, :wallet_name
 
   def save
     # 通帳を保存

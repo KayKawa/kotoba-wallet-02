@@ -2,11 +2,10 @@ class WalletsController < ApplicationController
   def index
     @wallets = Wallet.all
     @buys = Buy.all
-    
   end
 
   def show
-    @wallet = Wallet.find(params[:id])
+    @wallet = Wallet.find_by(wallet_name: params[:wallet_name])
 
     # これまでのgive
     give = Buy.where(giver_id: [@wallet.user_id])

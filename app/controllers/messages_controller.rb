@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @wallet = Wallet.find(params[:wallet_id])
+    @wallet = Wallet.find_by(params[:wallet_name])
 
     # これまでのgive
     give = Buy.where(giver_id: [@wallet.user_id])

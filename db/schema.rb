@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_163225) do
     t.integer "stock_quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "wallet_id"
+    t.string "wallet_name"
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 

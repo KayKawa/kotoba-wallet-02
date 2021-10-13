@@ -1,11 +1,11 @@
 class PurchasesController < ApplicationController
   def new
-    @wallet = Wallet.find(params[:wallet_id])
+    @wallet = Wallet.find_by(wallet_name: params[:wallet_wallet_name])
     @purchase = Purchase.new
   end
 
   def create
-    @wallet = Wallet.find(params[:wallet_id])
+    @wallet = Wallet.find_by(wallet_name: params[:wallet_wallet_name])
     @purchase_statement = PurchaseStatement.new(purchases_params)
     if @purchase_statement.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']  # 自身のPAY.JPテスト秘密鍵を記述しましょう
@@ -25,5 +25,6 @@ end
 private
 
 def purchases_params
-  params.require(:purchase).permit(:quantity).merge(wallet_id: params[:wallet_id]).merge(token: params[:token])
+  params.require(:purchase).permit(:quantity).merge(wallet_id: @wallet.id,
+                                                    wallet_name: @wallet.wallet_name).merge(token: params[:token])
 end

@@ -1,13 +1,16 @@
 class BuysController < ApplicationController
   def new
-    @wallet = Wallet.find(params[:wallet_id])
+    @wallet = Wallet.find_by(wallet_name: params[:wallet_wallet_name])
+
     @buy = Buy.new
   end
 
   def create
-    @wallet = Wallet.find(params[:wallet_id])
+    @wallet = Wallet.find_by(wallet_name: params[:wallet_wallet_name])
+
     # 通帳を保存
-    @statement = Statement.create(minus: params[:quantity].to_i, wallet_id: params[:wallet_id])
+    @statement = Statement.create(minus: params[:quantity].to_i, wallet_id: @wallet.id)
+
     # 購入情報を保存
     @buy_message = BuyMessage.new(buys_params)
 
@@ -32,7 +35,7 @@ class BuysController < ApplicationController
   private
 
   def buys_params
-    params.permit(:quantity, :unit_price, :message).merge(wallet_id: params[:wallet_id], statement_id: @statement.id,
-                                                          giver_id: current_user.id, taker_id: @wallet.user_id).merge(token: params[:token])
+    params.permit(:quantity, :unit_price, :message).merge(wallet_id: @wallet.id, statement_id: @statement.id,
+                                                          giver_id: current_user.id, taker_id: @wallet.user_id, wallet_name: @wallet.wallet_name).merge(token: params[:token])
   end
 end

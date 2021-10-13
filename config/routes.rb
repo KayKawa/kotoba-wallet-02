@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  resources :wallets, only: %i[index show] do
+  resources :wallets, param: :wallet_name, only: %i[index show] do
     resources :purchases, only: %i[new create]
     resources :buys, only: %i[new create]
     resources :messages, only: %i[index]
