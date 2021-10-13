@@ -131,46 +131,44 @@ Version: v1.1
 					x-text="tab"></li>
                     </template>
                   </ul>
-                  <div class="w-full rounded-xl bg-gray-100 text-center mx-auto p-10">
-                    <div x-show="activeTab===0">
-                      <div class="flex flex-wrap">
-                        <% @send_message.each do |m| %>
-                          <!--贈ったKOTOBA コンテナ スタート-->
-                          <div class="w-1/2 p-4">
-                            <div class="-mb-16 ml-2">
-                              <img class="h-32 w-32 bg-white p-2 rounded-full   " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
-                            </div>
-                            <div class="bg-white shadow-lg p-5 rounded-xl h-96">
-                              <div class="text-center px-14">
-                                <h2 class="text-gray-800 text-3xl font-bold"><%= m.receiver.nickname %></h2>
-                                <p class="text-gray-400 mt-2">@immohitdhiman</p>
-                                <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
-                              </div>
+                  <div x-show="activeTab===0">
+                    <div class="flex flex-wrap">
+                      <% @send_message.each do |m| %>
+                        <!--贈ったKOTOBA コンテナ スタート-->
+                        <div class="w-1/2 p-4">
+                          <div class="-mb-16 ml-2">
+                            <img class="h-32 w-32 bg-white p-2 rounded-full   " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
+                          </div>
+                          <div class="bg-white shadow-lg p-5 rounded-xl h-96">
+                            <div class="text-center px-14">
+                              <h2 class="text-gray-800 text-3xl font-bold"><%= m.receiver.nickname %></h2>
+                              <p class="text-gray-400 mt-2">@immohitdhiman</p>
+                              <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
                             </div>
                           </div>
-                          <!--贈ったKOTOBA コンテナ スタート-->
-                        <% end %>
-                      </div>
+                        </div>
+                        <!--贈ったKOTOBA コンテナ スタート-->
+                      <% end %>
                     </div>
-                    <div x-show="activeTab===1">
-                      <div class="flex flex-wrap">
-                        <% @receive_message.each do |m| %>
-                          <!--貰ったKOTOBA コンテナ スタート-->
-                          <div class="w-1/2 p-4">
-                            <div class="-mb-16 ml-2">
-                              <img class="h-32 w-32 bg-white p-2 rounded-full   " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
-                            </div>
-                            <div class="bg-white shadow-lg p-5 rounded-xl h-96">
-                              <div class="text-center px-14">
-                                <h2 class="text-gray-800 text-3xl font-bold"><%= m.sender.nickname %></h2>
-                                <p class="text-gray-400 mt-2">@immohitdhiman</p>
-                                <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
-                              </div>
+                  </div>
+                  <div x-show="activeTab===1">
+                    <div class="flex flex-wrap">
+                      <% @receive_message.each do |m| %>
+                        <!--貰ったKOTOBA コンテナ スタート-->
+                        <div class="w-1/2 p-4">
+                          <div class="-mb-16 ml-2">
+                            <img class="h-32 w-32 bg-white p-2 rounded-full   " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
+                          </div>
+                          <div class="bg-white shadow-lg p-5 rounded-xl h-96">
+                            <div class="text-center px-14">
+                              <h2 class="text-gray-800 text-3xl font-bold"><%= m.sender.nickname %></h2>
+                              <p class="text-gray-400 mt-2">@immohitdhiman</p>
+                              <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
                             </div>
                           </div>
-                          <!--貰ったKOTOBA コンテナ スタート-->
-                        <% end %>
-                      </div>
+                        </div>
+                        <!--貰ったKOTOBA コンテナ スタート-->
+                      <% end %>
                     </div>
                   </div>
                   <ul class="flex justify-center items-center my-4">
