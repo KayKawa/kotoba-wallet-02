@@ -142,7 +142,7 @@ Version: v1.1
                           <div class="bg-white shadow-lg p-5 rounded-xl h-96">
                             <div class="text-center px-14">
                               <h2 class="text-gray-800 text-3xl font-bold"><%= m.receiver.nickname %></h2>
-                              <p class="text-gray-400 mt-2">@immohitdhiman</p>
+                              <p class="text-gray-400 mt-2">@<%= m.receiver.wallet.wallet_name %></p>
                               <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
                             </div>
                           </div>
@@ -162,7 +162,7 @@ Version: v1.1
                           <div class="bg-white shadow-lg p-5 rounded-xl h-96">
                             <div class="text-center px-14">
                               <h2 class="text-gray-800 text-3xl font-bold"><%= m.sender.nickname %></h2>
-                              <p class="text-gray-400 mt-2">@immohitdhiman</p>
+                              <p class="text-gray-400 mt-2">@<%= m.sender.wallet.wallet_name %></p>
                               <p class="mt-2 text-gray-600 font-shippori"><%= m.message %></p>
                             </div>
                           </div>
