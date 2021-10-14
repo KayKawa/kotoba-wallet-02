@@ -20,7 +20,7 @@
                       プロフィール画像
                       <abbr class="text-red-500 ml-1" title="required field">*</abbr>
                     </span>
-                    <input type="file" class="hidden" :multiple="multiple" :accept="accept">
+                    <%= f.file_field :image, class:"hidden" %>
                   </label>
                 </div>
               </div>

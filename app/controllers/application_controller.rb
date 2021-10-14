@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # 新規登録時に許可するストロングパラメータ
     devise_parameter_sanitizer.permit(:sign_up,
-                                      keys: [:nickname, :gender_id, :last_name, :first_name, :last_kana, :first_kana,
+                                      keys: [:image, :nickname, :gender_id, :last_name, :first_name, :last_kana, :first_kana,
                                              :birthday, { wallet_attributes: %i[stock_quantity wallet_name] }])
     # ログイン時に許可するストロングパラメータ
     devise_parameter_sanitizer.permit(:sign_in,
