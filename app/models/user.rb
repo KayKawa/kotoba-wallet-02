@@ -8,4 +8,5 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :wallet
   has_many :buys
   has_many :messages
+  has_one_attached :image
 end
