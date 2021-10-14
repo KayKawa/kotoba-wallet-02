@@ -1,3 +1,30 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+   const ImageList = document.getElementById('image-list');
+  
+   document.getElementById('prof-img').addEventListener('change', function(e){
+     // 画像が表示されている場合のみ、すでに存在している画像を削除する
+      const imageContent = document.querySelector('img');
+      if (imageContent){
+        imageContent.remove();
+      }
+  
+     const file = e.target.files[0];
+     const blob = window.URL.createObjectURL(file);
+  
+     // 画像を表示するためのdiv要素を生成
+     const imageElement = document.createElement('div');
+  
+     // 表示する画像を生成
+     const blobImage = document.createElement('img');
+     blobImage.setAttribute('src', blob);
+  
+   // 生成したHTMLの要素をブラウザに表示させる
+     imageElement.appendChild(blobImage);
+     ImageList.appendChild(imageElement);
+   });
+  });
+</script>
 <%= render "shared/second-header"%>
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
   <div class="bg-gray-100 relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -12,15 +39,14 @@
               <!--プロフィール画像s-->
               <div class="md:space-y-2 mb-3">
                 <div class="flex flex-col items-center py-6">
-                  <div class="w-32 h-32 flex-none rounded-full border-2 border-yellow-400 overflow-hidden mb-3">
-                    <ion-icon name="person" class="w-full h-full text-gray-600"></ion-icon>
+                  <div id="image-list" class="w-32 h-32 rounded-full border-2 border-yellow-400 overflow-hidden mb-3">
                   </div>
                   <label class="cursor-pointer ">
                     <span class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:shadow-lg">
                       プロフィール画像
                       <abbr class="text-red-500 ml-1" title="required field">*</abbr>
                     </span>
-                    <%= f.file_field :image, class:"hidden" %>
+                    <%= f.file_field :image, class:"hidden" ,id:"prof-img" %>
                   </label>
                 </div>
               </div>
