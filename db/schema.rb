@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_163225) do
+ActiveRecord::Schema.define(version: 2021_10_13_195338) do
+
+  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "buys", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "giver_id"
@@ -59,16 +87,16 @@ ActiveRecord::Schema.define(version: 2021_10_13_163225) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "nickname", null: false
+    t.string "email", limit: 255, default: "", null: false
+    t.string "encrypted_password", limit: 255, default: "", null: false
+    t.string "nickname", limit: 255, null: false
     t.integer "gender_id", null: false
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_kana", null: false
-    t.string "first_kana", null: false
+    t.string "last_name", limit: 255, null: false
+    t.string "first_name", limit: 255, null: false
+    t.string "last_kana", limit: 255, null: false
+    t.string "first_kana", limit: 255, null: false
     t.date "birthday", null: false
-    t.string "reset_password_token"
+    t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
@@ -80,10 +108,12 @@ ActiveRecord::Schema.define(version: 2021_10_13_163225) do
     t.integer "stock_quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "wallet_name"
+    t.string "wallet_name", limit: 255
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buys", "statements"
   add_foreign_key "buys", "users", column: "giver_id"
   add_foreign_key "buys", "users", column: "taker_id"
