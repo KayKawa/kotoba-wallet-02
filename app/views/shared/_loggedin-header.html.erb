@@ -17,8 +17,8 @@
             <!-- ヘッダープロフィール＠スタート -->
             <button class="outline-none focus:outline-none flex items-center bg-gray-800">
               <div class="flex">
-                <div class="w-16 rounded-full overflow-hidden border-2 border-yellow-300 mr-3">
-                  <%= image_tag('cp-5.png')%>
+                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-yellow-300 mr-3">
+                  <%= image_tag current_user.image%>
                 </div>
                 <div class="flex flex-col my-auto font-extrabold text-gray-100">
                   <span><%=current_user.nickname%></span>
