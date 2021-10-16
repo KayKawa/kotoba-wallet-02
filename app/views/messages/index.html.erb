@@ -126,7 +126,7 @@ Version: v1.1
                 <div x-data="setup()">
                   <ul class="flex justify-center items-center my-4">
                     <template x-for="(tab, index) in tabs" :key="index">
-                      <li class="cursor-pointer py-2 px-4 text-gray-500 border-b-8"
+                      <li class="font-light cursor-pointer py-2 px-4 text-gray-500 border-b-8"
 					:class="activeTab===index ? 'text-yellow-500 border-yellow-500' : ''" @click="activeTab = index"
 					x-text="tab"></li>
                     </template>
@@ -173,7 +173,7 @@ Version: v1.1
                   </div>
                   <ul class="flex justify-center items-center my-4">
                     <template x-for="(tab, index) in tabs" :key="index">
-                      <li class="cursor-pointer py-3 px-4 rounded transition"
+                      <li class="font-light cursor-pointer py-3 px-4 rounded transition"
 					:class="activeTab===index ? 'bg-yellow-500 text-white' : ' text-gray-500'" @click="activeTab = index"
 					x-text="tab"></li>
                     </template>
